@@ -1,13 +1,46 @@
+import { motion } from 'framer-motion';
 import { Home, Brain, Radiation, BarChart3, UserRound } from 'lucide-react';
 
 const items = [
   { key: 'home', icon: Home, label: 'Home' },
-  { key: 'assist', icon: Brain, label: 'AI Assist' },
-  { key: 'treatment', icon: Radiation, label: 'Treatment' },
-  { key: 'analytics', icon: BarChart3, label: 'Analytics' },
+  { key: 'assist', icon: Brain, label: 'Assist' },
+  { key: 'treatment', icon: Radiation, label: 'Treat' },
+  { key: 'analytics', icon: BarChart3, label: 'Data' },
   { key: 'profile', icon: UserRound, label: 'Profile' },
 ];
 
 export default function MobileBottomNav({ tab, setTab }) {
-  return <nav className="fixed bottom-4 left-1/2 z-40 w-[94%] max-w-md -translate-x-1/2 rounded-3xl border border-white/10 bg-card/70 p-2 backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,209,255,0.2)]"> <div className="grid grid-cols-5">{items.map(({ key, icon: Icon, label }) => <button key={key} onClick={() => setTab(key)} className="relative rounded-2xl px-1 py-2 text-center"><Icon className={`mx-auto h-4 w-4 ${tab === key ? 'text-neon drop-shadow-[0_0_8px_rgba(0,209,255,0.9)]' : 'text-white/60'}`} /><span className="text-[10px] text-white/70">{label}</span>{tab === key && <span className="absolute -bottom-1 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-neon" />}</button>)}</div></nav>;
+  return (
+    <nav className="fixed bottom-2 left-1/2 z-50 w-[95%] max-w-md -translate-x-1/2 px-2 pb-[max(env(safe-area-inset-bottom),0.3rem)]">
+      <div className="relative overflow-hidden rounded-[1.8rem] border border-white/15 bg-card/70 p-2 backdrop-blur-3xl shadow-[0_18px_60px_rgba(0,0,0,0.5)]">
+        <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-neon/80 to-transparent" />
+        <div className="grid grid-cols-5 gap-1">
+          {items.map(({ key, icon: Icon, label }) => {
+            const active = tab === key;
+            return (
+              <motion.button
+                key={key}
+                onClick={() => setTab(key)}
+                whileTap={{ scale: 0.92 }}
+                className="relative rounded-2xl px-1 pb-1.5 pt-2 text-center"
+              >
+                {active && (
+                  <motion.span
+                    layoutId="active-tab"
+                    className="absolute inset-0 rounded-2xl bg-gradient-to-b from-neon/25 to-purple/20"
+                    transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+                  />
+                )}
+                <div className="relative z-10">
+                  <Icon className={`mx-auto h-4 w-4 transition-all ${active ? 'text-neon drop-shadow-[0_0_10px_rgba(0,209,255,0.9)]' : 'text-white/60'}`} />
+                  <span className={`mt-1 block text-[10px] ${active ? 'text-white' : 'text-white/65'}`}>{label}</span>
+                  {active && <span className="mx-auto mt-1 block h-1 w-7 rounded-full bg-neon shadow-[0_0_12px_rgba(0,209,255,1)]" />}
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
+    </nav>
+  );
 }
