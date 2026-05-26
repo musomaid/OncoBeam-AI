@@ -2,11 +2,8 @@ import { motion } from 'framer-motion';
 
 export default function NeonCard({ children, className = '' }) {
   return (
-    <motion.div
-      whileHover={{ y: -4, scale: 1.01 }}
-      className={`glass rounded-2xl p-4 shadow-neon ${className}`}
-    >
+    <motion.section whileTap={{ scale: 0.99 }} className={`rounded-3xl border border-neon/25 bg-card/70 p-4 shadow-neon backdrop-blur-xl ${className}`}>
       {children}
-    </motion.div>
+    </motion.section>
   );
 }
