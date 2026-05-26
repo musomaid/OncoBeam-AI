@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import MainLayout from './layouts/MainLayout';
-import { HomeScreen, AssistScreen, TreatmentScreen, AnalyticsScreen, ProfileScreen } from './pages/Screens';
+import { HomeScreen, AssistScreen, TreatmentScreen, AnalyticsScreen, ProfileScreen } from './screens';
 
 export default function App() {
   const [tab, setTab] = useState('home');
