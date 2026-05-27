@@ -11,9 +11,11 @@ export default function MainLayout({ tab, setTab, children }) {
       </div>
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_15%_12%,rgba(0,209,255,0.24),transparent_38%),radial-gradient(circle_at_88%_84%,rgba(123,97,255,0.22),transparent_40%)]" />
       <div className="particle-field pointer-events-none fixed inset-0" />
+      <div className="pointer-events-none fixed inset-0 cyber-fog" />
+      <div className="pointer-events-none fixed inset-0 hud-overlay" />
 
       <header className="relative mb-4 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-2 backdrop-blur-lg">
-        <p className="text-xs text-white/70">May 26, 2026 • Android Optimized</p>
+        <p className="text-xs text-white/70">May 27, 2026 • Android Optimized</p>
         <span className="rounded-full border border-success/30 bg-success/15 px-2 py-1 text-[10px] text-success">System Online</span>
       </header>
 
