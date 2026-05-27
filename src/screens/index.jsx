@@ -1,4 +1,4 @@
-import { Mic, Upload, Zap, Bell, Shield, SlidersHorizontal, Crosshair, MessageSquare, Radio, BrainCircuit, Activity, Radar, ShieldAlert, Cpu, Waves, Orbit, GaugeCircle } from 'lucide-react';
+import { Mic, Upload, Zap, Bell, Shield, SlidersHorizontal, Crosshair, MessageSquare, Radio, BrainCircuit, Activity, Radar, ShieldAlert, Cpu, Waves, Orbit, GaugeCircle, Sparkles, ShieldCheck, Lock, ScanLine, Fingerprint, Bot, AudioWaveform, Siren, ChevronRight, Flame, UserRound, Stethoscope, Target, Award, BarChart3 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import NeonCard from '../components/NeonCard';
 import GlassCard from '../components/GlassCard';
@@ -121,4 +121,91 @@ export const AnalyticsScreen = () => {
   </div>;
 };
 
-export const ProfileScreen = () => <div className="space-y-3"><NeonCard><p className="text-lg font-semibold">Dr. Aria Morgan</p><p className="text-sm text-white/60">Lead Radiation Oncologist</p></NeonCard>{[[Bell, 'Notifications'], [Shield, 'Security'], [SlidersHorizontal, 'AI Configuration'], [Zap, 'Dark Mode']].map(([Icon, label]) => <GlassCard key={label} className="flex items-center justify-between"><span className="flex items-center gap-2"><Icon className="h-4 w-4 text-neon" />{label}</span><span className="text-xs text-white/45">Manage</span></GlassCard>)}<GlassCard><p className="text-sm">OncoBeam AI v2.8 • Cyber oncology assistant.</p></GlassCard></div>;
+export const ProfileScreen = () => {
+  const operatorStatus = [['AI Neural Link', '98.7%', 'stable'], ['Oncology Engine Sync', '99.1%', 'stable'], ['Radiation Core', 'Nominal', 'stable'], ['Adaptive Planning', 'Active', 'stable'], ['Security Matrix', 'Hardened', 'watch']];
+  const profileStats = [['Patients supervised', '164'], ['AI assist usage', '91%'], ['Treatment precision', '99.2%'], ['Oncology rank', '#04'], ['Session efficiency', '96.3%']];
+  const performanceCards = [['AI-assisted procedures', 88, '+18 this week'], ['Precision score', 97, 'Top percentile'], ['Treatment success rate', 94, 'Last 30 sessions'], ['Workflow efficiency', 91, 'Daily average'], ['Adaptive AI interactions', 84, 'Realtime tuning']];
+  const settingsModules = [[Bell, 'Notifications', 'Clinical signal alerts', 'Optimized'], [SlidersHorizontal, 'AI Configuration', 'Neural model tuning', 'Adaptive'], [Shield, 'Security Matrix', 'Zero-trust controls', 'Fortified'], [BrainCircuit, 'Neural Preferences', 'Operator cognition mode', 'Synced'], [Crosshair, 'Radiation Workflow', 'Beam logic presets', 'Ready'], [Orbit, 'System Synchronization', 'Cloud + edge coherence', 'Stable'], [Lock, 'Privacy Shield', 'Compliance + audit', 'Protected'], [AudioWaveform, 'Voice AI Settings', 'Command cadence', 'Listening']];
+  const feed = ['Oncology engine updated', 'Neural sync optimized', 'AI recommendation recalibrated', 'Security verification complete', 'Voice AI synchronized'];
+  const achievements = [['Precision Oncology Specialist', 'Unlocked 21 May', Award], ['AI Workflow Master', 'Unlocked 14 May', Bot], ['Radiation Expert', 'Unlocked 2 May', Target], ['Adaptive Planning Elite', 'Unlocked 28 Apr', Sparkles]];
+
+  return <div className="space-y-3.5 pb-2">
+    <NeonCard className="hud-overlay relative overflow-hidden p-4">
+      <div className="absolute inset-0 cyber-fog opacity-70" />
+      <div className="absolute inset-0 scanner-grid opacity-25" />
+      <div className="relative z-10">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center gap-3">
+            <div className="relative h-16 w-16 rounded-full border border-neon/45 bg-black/40 p-1">
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: 'linear' }} className="absolute inset-0 rounded-full border-2 border-neon/70 border-t-transparent" />
+              <div className="grid h-full w-full place-content-center rounded-full border border-white/20 bg-gradient-to-br from-neon/20 to-purple/20">
+                <UserRound className="h-6 w-6 text-neon" />
+              </div>
+            </div>
+            <div>
+              <p className="text-[10px] tracking-[0.18em] text-neon/90">ONCOLOGY OPERATOR ID</p>
+              <h2 className="font-heading text-xl font-semibold">Dr. Aria Morgan</h2>
+              <p className="text-xs text-white/70">Lead Radiation Oncologist • Clearance Level Ω-7</p>
+            </div>
+          </div>
+          <motion.div animate={{ opacity: [0.55, 1, 0.55] }} transition={{ duration: 1.8, repeat: Infinity }} className="rounded-xl border border-success/40 bg-success/15 p-2 text-[10px] text-success">
+            <p className="flex items-center gap-1"><Activity className="h-3 w-3" /> AI Sync Live</p>
+            <p className="mt-1">Neural link 99.4%</p>
+          </motion.div>
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-2 text-[11px]">
+          {profileStats.map(([k, v], i) => <motion.div key={k} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="rounded-xl border border-white/10 bg-white/[0.04] p-2"><p className="text-white/60">{k}</p><p className="mt-1 font-semibold text-neon">{v}</p></motion.div>)}
+        </div>
+      </div>
+    </NeonCard>
+
+    <GlassCard className="space-y-2.5">
+      <div className="flex items-center justify-between"><p className="text-base font-semibold">AI Operator Status</p><Cpu className="h-4 w-4 text-neon" /></div>
+      {operatorStatus.map(([k, v, state], i) => <div key={k} className="rounded-xl border border-white/10 bg-white/[0.03] p-2.5">
+        <div className="mb-1 flex items-center justify-between text-xs"><span className="text-white/70">{k}</span><span className={`${state === 'watch' ? 'text-amber-300' : 'text-success'}`}>{v}</span></div>
+        <div className="h-1.5 overflow-hidden rounded-full bg-white/10"><motion.div animate={{ width: ['25%', '100%', '60%'] }} transition={{ duration: 2.4 + i * 0.15, repeat: Infinity }} className={`h-full ${state === 'watch' ? 'bg-gradient-to-r from-amber-300 to-neon' : 'bg-gradient-to-r from-neon via-cyan-300 to-purple'}`} /></div>
+      </div>)}
+    </GlassCard>
+
+    <section className="grid grid-cols-2 gap-2.5">
+      {performanceCards.map(([k, v, s], i) => <motion.div key={k} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.06 }}><GlassCard className="p-3">
+        <div className="flex items-center justify-between text-[11px]"><p className="text-white/70">{k}</p><BarChart3 className="h-3.5 w-3.5 text-neon" /></div>
+        <div className="mt-2 flex items-center gap-2">
+          <div className="relative h-11 w-11">
+            <svg viewBox="0 0 36 36" className="h-full w-full">
+              <path d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" fill="none" stroke="rgba(255,255,255,.14)" strokeWidth="3" />
+              <motion.path d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" fill="none" stroke="#00D1FF" strokeWidth="3" strokeLinecap="round" strokeDasharray="100" animate={{ strokeDashoffset: [100, 100 - v] }} transition={{ duration: 1.1, delay: i * 0.1 }} />
+            </svg>
+            <p className="absolute inset-0 grid place-content-center text-[10px] font-semibold text-neon">{v}%</p>
+          </div>
+          <p className="text-[10px] text-white/65">{s}</p>
+        </div>
+      </GlassCard></motion.div>)}
+    </section>
+
+    <GlassCard className="space-y-2">
+      <div className="flex items-center justify-between"><p className="text-base font-semibold">AI Personalization Module</p><BrainCircuit className="h-4 w-4 text-purple" /></div>
+      {[['AI assistant personality', 72], ['Adaptive oncology mode', 88], ['AI confidence threshold', 93], ['Prediction sensitivity', 76]].map(([k, value]) => <div key={k} className="space-y-1"><div className="flex items-center justify-between text-xs"><p className="text-white/70">{k}</p><p className="text-neon">{value}%</p></div><div className="h-2 overflow-hidden rounded-full bg-white/10"><motion.div animate={{ width: [`${Math.max(value - 9, 25)}%`, `${value}%`, `${Math.max(value - 4, 25)}%`] }} transition={{ duration: 2.2, repeat: Infinity }} className="h-full rounded-full bg-gradient-to-r from-purple via-neon to-cyan-300" /></div></div>)}
+      <div className="flex items-center justify-between rounded-xl border border-purple/35 bg-purple/10 p-2 text-xs"><span className="flex items-center gap-1 text-white/75"><Siren className="h-3.5 w-3.5 text-neon" /> Voice AI behavior</span><button className="rounded-full border border-neon/50 bg-neon/15 px-2 py-1 text-neon">Adaptive</button></div>
+    </GlassCard>
+
+    <GlassCard className="space-y-2">
+      <div className="flex items-center justify-between"><p className="text-base font-semibold">Security Matrix Panel</p><ShieldCheck className="h-4 w-4 text-success" /></div>
+      {[[ShieldCheck, 'Neural firewall', 'Fortified'], [Lock, 'Encryption integrity', '99.8%'], [ScanLine, 'Session shield', 'Active'], [Fingerprint, 'Biometric verification', 'Verified'], [Stethoscope, 'Secure oncology sync', 'Protected']].map(([Icon, label, status]) => <div key={label} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-2"><span className="flex items-center gap-2 text-xs"><Icon className="h-3.5 w-3.5 text-neon" />{label}</span><span className="text-[11px] text-success">{status}</span></div>)}
+    </GlassCard>
+
+    <GlassCard className="space-y-2">
+      <p className="text-base font-semibold">Advanced Settings Hub</p>
+      {settingsModules.map(([Icon, label, subtitle, state], i) => <motion.button key={label} whileTap={{ scale: 0.985 }} whileHover={{ y: -1 }} className="w-full rounded-2xl border border-white/10 bg-white/[0.03] p-2.5 text-left">
+        <div className="flex items-center justify-between gap-2"><div className="flex items-center gap-2.5"><span className="rounded-xl border border-neon/35 bg-neon/10 p-1.5"><Icon className="h-3.5 w-3.5 text-neon" /></span><div><p className="text-sm">{label}</p><p className="text-[11px] text-white/55">{subtitle}</p></div></div><div className="text-right"><p className="text-[10px] text-success">{state}</p><ChevronRight className="ml-auto h-3.5 w-3.5 text-white/50" /></div></div>
+        <motion.div animate={{ width: ['10%', '95%', '45%'] }} transition={{ duration: 2.4 + i * 0.13, repeat: Infinity }} className="mt-2 h-1 rounded-full bg-gradient-to-r from-neon to-purple" />
+      </motion.button>)}
+    </GlassCard>
+
+    <GlassCard className="space-y-2"><p className="text-base font-semibold">Live AI Activity Feed</p><div className="max-h-36 space-y-2 overflow-y-auto pr-1">{feed.map((item, idx) => <motion.div key={item} animate={{ opacity: [0.7, 1, 0.7] }} transition={{ duration: 1.8, repeat: Infinity, delay: idx * 0.2 }} className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] p-2 text-xs"><span className="h-2 w-2 rounded-full bg-neon shadow-[0_0_10px_rgba(0,209,255,1)]" /><p className="flex-1">{item}</p><span className="text-[10px] text-white/45">+{idx + 1}m</span></motion.div>)}</div></GlassCard>
+
+    <GlassCard><p className="mb-2 text-base font-semibold">Doctor Achievement System</p><div className="grid grid-cols-2 gap-2">{achievements.map(([name, unlocked, Icon]) => <div key={name} className="rounded-xl border border-purple/35 bg-gradient-to-br from-purple/15 to-neon/10 p-2"><p className="flex items-center gap-1 text-[11px] text-neon"><Icon className="h-3.5 w-3.5" />{name}</p><p className="mt-1 text-[10px] text-white/65">{unlocked}</p><motion.div animate={{ opacity: [0.25, 0.7, 0.25] }} transition={{ duration: 1.9, repeat: Infinity }} className="mt-2 h-1 rounded-full bg-gradient-to-r from-neon to-purple" /></div>)}</div></GlassCard>
+
+    <GlassCard className="relative overflow-hidden"><div className="absolute inset-0 ai-scan-noise opacity-35" /><div className="relative z-10"><p className="mb-2 text-base font-semibold">System Diagnostics Center</p><div className="grid grid-cols-2 gap-2 text-xs">{[['AI Core Version', 'v3.4.9'], ['Neural Engine Build', '2026.05.27'], ['System Latency', '21 ms'], ['Cloud Sync Status', 'Synchronized'], ['Oncology AI Stability', '99.6%'], ['Radiation Runtime', '14h 32m']].map(([k,v]) => <div key={k} className="rounded-xl border border-white/10 bg-white/[0.03] p-2"><p className="text-white/60">{k}</p><p className="mt-1 text-neon">{v}</p></div>)}</div><p className="mt-2 text-[11px] text-white/50">OncoBeam AI operator node • premium oncology command interface.</p></div></GlassCard>
+  </div>;
+};
